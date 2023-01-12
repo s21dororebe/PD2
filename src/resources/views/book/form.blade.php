@@ -118,6 +118,27 @@
             </div>
         </div>
 
+        <div class="mb-3">
+            <label for="book-image" class="form-label">Attēls</label>
+
+            @if ($book->image)
+                <img src="{{ asset('images/' . $book->image) }}"
+                     class="img-fluid img-thumbnail d-block mb-2"
+                     alt="{{ $book->name }}">
+            @endif
+
+            <input
+                type="file"
+                accept="image/png, image/jpeg"
+                id="book-image"
+                name="image"
+                class="form-control @error('image') is-invalid @enderror">
+
+            @error('image')
+                <p class="invalid-feedback">{{ $errors->first('image') }}</p>
+            @enderror
+        </div>
+
         <button type="submit" class="btn btn-primary">
             {{ $book->exists ? 'Atjaunot ierakstu' : 'Pievienot ierakstu' }}
         </button>
