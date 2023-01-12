@@ -90,4 +90,9 @@ class BookController extends Controller
         return redirect('/books');
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 }
